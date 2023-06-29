@@ -30,6 +30,7 @@ const TestCube = () => {
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
         scene.add(ambientLight);
 
+        // Create a directional light
         const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
         directionalLight.position.set(1, 1, 1);
         scene.add(directionalLight);
@@ -46,7 +47,14 @@ const TestCube = () => {
         // Set up a renderer
         const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
         renderer.setSize(window.innerWidth, window.innerHeight);
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
 
+            // After making changes to aspect
+            camera.updateProjectionMatrix();
+        });
+        
         // Animation loop
         const animate = () => {
             requestAnimationFrame(animate);
@@ -63,7 +71,7 @@ const TestCube = () => {
 
     return (
         <>
-            <canvas ref={canvasRef}  />
+            <canvas ref={canvasRef} />
         </>
     );
 }
