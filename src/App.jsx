@@ -5,10 +5,10 @@ import './index.css';
 
 
 // Images
-import sunTexture from './Textures/sun.jpg';
-import alpineTexture from './Textures/alpine.png';
-import savanaTexture from './Textures/savannah.png';
-import tropicalTexture from './Textures/tropical.png';
+import sunTexture from './Textures/Sun.jpg';
+import alpineTexture from './Textures/Alpine.png';
+import savanaTexture from './Textures/Savannah.png';
+import tropicalTexture from './Textures/Tropical.png';
 
 function App() {
 
