@@ -2,7 +2,7 @@ import React from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import './index.css';
-
+import { PlanetContext } from './Context/PlanetContext';
 
 // Images
 import sunTexture from './Textures/Sun.jpg';
@@ -11,9 +11,8 @@ import savanaTexture from './Textures/Savannah.png';
 import tropicalTexture from './Textures/Tropical.png';
 
 function App() {
-
   const canvasRef = React.useRef(null);
-
+  const { createPlanet, addStar } = React.useContext(PlanetContext);
 
   React.useEffect(() => {
     const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
@@ -23,64 +22,30 @@ function App() {
     // Create Scene
     const scene = new THREE.Scene();
     // Create Camera
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
     // Create Texture Loader
     const textureLoader = new THREE.TextureLoader();
     // Create Point Light
-    const pointLight = new THREE.PointLight(0xFFFFFF, 2, 300);
+    const pointLight = new THREE.PointLight(0xffffff, 2, 300);
     scene.add(pointLight);
     // Create Ambient Light
-    const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.01);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.01);
     scene.add(ambientLight);
-
 
     // Create Orbit Controls
     const orbit = new OrbitControls(camera, renderer.domElement);
     camera.position.set(0, 12, 60);
     orbit.update();
 
-    function createPlanet(size, texture, position, ring) {
-      const geo = new THREE.SphereGeometry(size, 30, 30);
-      const mat = new THREE.MeshStandardMaterial({
-        map: textureLoader.load(texture)
-      });
-      const mesh = new THREE.Mesh(geo, mat);
-      const obj = new THREE.Object3D();
-      obj.add(mesh);
-      if (ring) {
-        const ringGeo = new THREE.RingGeometry(
-          ring.innerRadius,
-          ring.outerRadius,
-          32);
-        const ringMat = new THREE.MeshBasicMaterial({
-          map: textureLoader.load(ring.texture),
-          side: THREE.DoubleSide
-        });
-        const ringMesh = new THREE.Mesh(ringGeo, ringMat);
-        obj.add(ringMesh);
-        ringMesh.position.x = position;
-        ringMesh.rotation.x = -0.5 * Math.PI;
-      }
-      scene.add(obj);
-      mesh.position.x = position;
-      return { mesh, obj };
-    }
+    // Create Stars
+    Array(200).fill().forEach(() => addStar(scene))
 
-
-    function addStar() {
-      const geo = new THREE.SphereGeometry(0.15, 24, 24);
-      const mat = new THREE.MeshBasicMaterial({ color: 0xffffff });
-      const star = new THREE.Mesh(geo, mat);
-
-      const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
-
-      star.position.set(x, y, z);
-      scene.add(star);
-    }
-
-    Array(200).fill().forEach(addStar);
-
-    // Create  Sun  
+    // Create Sun
     const sunGeo = new THREE.SphereGeometry(4, 32, 32);
     const sunMat = new THREE.MeshBasicMaterial({ map: textureLoader.load(sunTexture) });
     const sun = new THREE.Mesh(sunGeo, sunMat);
@@ -101,7 +66,6 @@ function App() {
     tropical.mesh.rotation.x = 0.5 * Math.PI;
     scene.add(tropical.obj);
 
-
     function animate() {
       renderer.render(scene, camera);
 
@@ -111,12 +75,10 @@ function App() {
       savana.mesh.rotation.z += 0.01;
       tropical.mesh.rotation.z += 0.01;
 
-
       // Orbit
       alpine.obj.rotation.y += 0.01;
       savana.obj.rotation.y += 0.001;
       tropical.obj.rotation.y += 0.0022;
-
     }
 
     renderer.setAnimationLoop(animate);
@@ -156,14 +118,7 @@ function App() {
     };
   }, []);
 
-
-
-  return (
-    <>
-      <canvas ref={canvasRef} />
-    </>
-  );
+  return <canvas ref={canvasRef} />;
 }
-
 
 export default App;
