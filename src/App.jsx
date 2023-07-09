@@ -32,11 +32,15 @@ function App() {
 
     // Create Camera
     const camera = new THREE.PerspectiveCamera(
-      45,
+      60,
       window.innerWidth / window.innerHeight,
       0.1,
       1000
     );
+
+    // // grid helper
+    // const gridHelper = new THREE.GridHelper(200, 50);
+    // scene.add(gridHelper);
 
 
     // Create Texture Loader
@@ -55,10 +59,10 @@ function App() {
 
     // Limitar el zoom
     orbit.minDistance = 30; // Establecer la distancia mínima de zoom
-    orbit.maxDistance = 80; // Establecer la distancia máxima de zoom
+    orbit.maxDistance = 300; // Establecer la distancia máxima de zoom
 
     // Create Stars
-    Array(200).fill().forEach(() => addStar(scene))
+    Array(300).fill().forEach(() => addStar(scene))
 
     // Create Sun
     const sunGeo = new THREE.SphereGeometry(4, 32, 32);
@@ -72,37 +76,37 @@ function App() {
     scene.add(mercury.obj);
 
     // Create Venus
-    const venus = createPlanet(2, venusTexture, 12);
+    const venus = createPlanet(2, venusTexture, 20);
     venus.mesh.rotation.x = 0.5 * Math.PI;
     scene.add(venus.obj);
 
     // Create Earth
-    const earth = createPlanet(3, earthTexture, 20);
+    const earth = createPlanet(3, earthTexture, 35);
     earth.mesh.rotation.x = 0.5 * Math.PI;
     scene.add(earth.obj);
 
     // Create Mars
-    const mars = createPlanet(4, marsTexture, 30);
+    const mars = createPlanet(4, marsTexture, 50);
     mars.mesh.rotation.x = 0.5 * Math.PI;
     scene.add(mars.obj);
 
     // Create Jupiter
-    const jupiter = createPlanet(5, jupiterTexture, 40);
+    const jupiter = createPlanet(5, jupiterTexture, 65);
     jupiter.mesh.rotation.x = 0.5 * Math.PI;
     scene.add(jupiter.obj);
 
     // Create Saturn
-    const saturn = createPlanet(5, saturnTexture, 50, {innerRadius: 7, outerRadius: 9, texture: saturnTexture});
+    const saturn = createPlanet(5, saturnTexture, 85, {innerRadius: 7, outerRadius: 9, texture: saturnTexture});
     saturn.mesh.rotation.x = 0.5 * Math.PI;
     scene.add(saturn.obj);
 
     // Create Uranus
-    const uranus = createPlanet(5, uranusTexture, 60);
+    const uranus = createPlanet(5, uranusTexture, 105);
     uranus.mesh.rotation.x = 0.5 * Math.PI;
     scene.add(uranus.obj);
 
     // Create Neptune
-    const neptune = createPlanet(5, neptuneTexture, 70);
+    const neptune = createPlanet(5, neptuneTexture, 125);
     neptune.mesh.rotation.x = 0.5 * Math.PI;
     scene.add(neptune.obj);
 
