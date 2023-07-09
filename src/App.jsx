@@ -25,7 +25,6 @@ function App() {
     // Create Renderer
     const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x00000);
 
     // Create Scene
     const scene = new THREE.Scene();
