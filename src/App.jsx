@@ -10,6 +10,10 @@ import alpineTexture from './Textures/Alpine.png';
 import savanaTexture from './Textures/Savannah.png';
 import tropicalTexture from './Textures/Tropical.png';
 
+<<<<<<< HEAD
+=======
+import PlanetDescription from './Components/PlanetDescription';
+>>>>>>> 5ce04a1d7e3d6f665dec1b569028d0d0d49f5239
 
 function App() {
   const canvasRef = React.useRef(null);
@@ -45,7 +49,7 @@ function App() {
 
     // Create Orbit Controls
     const orbit = new OrbitControls(camera, renderer.domElement);
-    camera.position.set(0, 12, 60);
+    camera.position.set(0, 100, 60);
     orbit.update();
 
     // Limitar el zoom
@@ -134,7 +138,12 @@ function App() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} />;
+  return (
+    <>
+      <PlanetDescription />
+      <canvas ref={canvasRef} />
+    </>
+  );
 }
 
 export default App;
