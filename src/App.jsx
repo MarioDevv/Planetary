@@ -5,7 +5,7 @@ import './index.css';
 import { PlanetContext } from './Context/PlanetContext';
 
 // Images
-import sunTexture from './Textures/Sun.jpg';
+import sunTexture from './Textures/sun.jpg';
 import mercuryTexture from './Textures/mercury.png';
 import venusTexture from './Textures/venus.jpg';
 import earthTexture from './Textures/earth.png';
@@ -25,7 +25,6 @@ function App() {
     // Create Renderer
     const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x00000);
 
     // Create Scene
     const scene = new THREE.Scene();
@@ -41,7 +40,6 @@ function App() {
     // // grid helper
     // const gridHelper = new THREE.GridHelper(200, 50);
     // scene.add(gridHelper);
-
 
     // Create Texture Loader
     const textureLoader = new THREE.TextureLoader();
@@ -59,7 +57,7 @@ function App() {
 
     // Limitar el zoom
     orbit.minDistance = 30; // Establecer la distancia mínima de zoom
-    orbit.maxDistance = 300; // Establecer la distancia máxima de zoom
+    orbit.maxDistance = 250; // Establecer la distancia máxima de zoom
 
     // Create Stars
     Array(300).fill().forEach(() => addStar(scene))
