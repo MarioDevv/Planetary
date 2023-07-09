@@ -6,12 +6,12 @@ import { PlanetContext } from './Context/PlanetContext';
 
 // Images
 import sunTexture from './Textures/Sun.jpg';
-import alpineTexture from './Textures/Alpine.png';
-import earthTexture from './Textures/earth.png';
+import mercuryTexture from './Textures/mercury.png';
 import venusTexture from './Textures/Venus.jpg';
+import earthTexture from './Textures/earth.png';
 import marsTexture from './Textures/Mars.jpg';
-import saturnTexture from './Textures/Saturn.jpg';
 import jupiterTexture from './Textures/jupiter.jpg';
+import saturnTexture from './Textures/Saturn.jpg';
 import uranusTexture from './Textures/uranus.jpg';
 import neptuneTexture from './Textures/neptune.png';
 import PlanetDescription from './Components/PlanetDescription';
@@ -66,10 +66,10 @@ function App() {
     const sun = new THREE.Mesh(sunGeo, sunMat);
     scene.add(sun);
 
-    // Create Alpine
-    const alpine = createPlanet(1.5, alpineTexture, 10);
-    alpine.mesh.rotation.x = 0.5 * Math.PI;
-    scene.add(alpine.obj);
+    // Create Mercury
+    const mercury = createPlanet(1.5, mercuryTexture, 10);
+    mercury.mesh.rotation.x = 0.5 * Math.PI;
+    scene.add(mercury.obj);
 
     // Create Venus
     const venus = createPlanet(2, venusTexture, 12);
@@ -91,7 +91,6 @@ function App() {
     jupiter.mesh.rotation.x = 0.5 * Math.PI;
     scene.add(jupiter.obj);
 
-
     // Create Saturn
     const saturn = createPlanet(5, saturnTexture, 50, {innerRadius: 7, outerRadius: 9, texture: saturnTexture});
     saturn.mesh.rotation.x = 0.5 * Math.PI;
@@ -112,7 +111,7 @@ function App() {
 
       // Self Rotation
       sun.rotation.z += 0.0040;
-      alpine.mesh.rotation.z += 0.01;
+      mercury.mesh.rotation.z += 0.01;
       venus.mesh.rotation.z += 0.01;
       earth.mesh.rotation.z += 0.01;
       mars.mesh.rotation.z += 0.01;
@@ -122,7 +121,7 @@ function App() {
       neptune.mesh.rotation.z += 0.01;
 
       // Orbit
-      alpine.obj.rotation.y += 0.01;
+      mercury.obj.rotation.y += 0.01;
       venus.obj.rotation.y += 0.001;
       earth.obj.rotation.y += 0.0022;
       mars.obj.rotation.y += 0.003;
