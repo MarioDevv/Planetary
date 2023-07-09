@@ -7,11 +7,11 @@ import { PlanetContext } from './Context/PlanetContext';
 // Images
 import sunTexture from './Textures/Sun.jpg';
 import mercuryTexture from './Textures/mercury.png';
-import venusTexture from './Textures/Venus.jpg';
+import venusTexture from './Textures/venus.jpg';
 import earthTexture from './Textures/earth.png';
-import marsTexture from './Textures/Mars.jpg';
+import marsTexture from './Textures/mars.jpg';
 import jupiterTexture from './Textures/jupiter.jpg';
-import saturnTexture from './Textures/Saturn.jpg';
+import saturnTexture from './Textures/saturn.jpg';
 import uranusTexture from './Textures/uranus.jpg';
 import neptuneTexture from './Textures/neptune.png';
 import PlanetDescription from './Components/PlanetDescription';
@@ -71,7 +71,7 @@ function App() {
     scene.add(sun);
 
     // Create Mercury
-    const mercury = createPlanet(1.5, mercuryTexture, 10);
+    const mercury = createPlanet(1.5, mercuryTexture, 8);
     scene.add(mercury.obj);
 
     // Create Venus
@@ -91,7 +91,7 @@ function App() {
     scene.add(jupiter.obj);
 
     // Create Saturn
-    const saturn = createPlanet(5, saturnTexture, 70, {innerRadius: 6, outerRadius: 8, texture: saturnTexture});
+    const saturn = createPlanet(5, saturnTexture, 68, {innerRadius: 6, outerRadius: 8, texture: saturnTexture});
     scene.add(saturn.obj);
 
     // Create Uranus
@@ -99,7 +99,7 @@ function App() {
     scene.add(uranus.obj);
 
     // Create Neptune
-    const neptune = createPlanet(5, neptuneTexture, 100);
+    const neptune = createPlanet(5, neptuneTexture, 110);
     scene.add(neptune.obj);
 
     function animate() {
@@ -112,19 +112,19 @@ function App() {
       earth.mesh.rotation.y += 0.01;
       mars.mesh.rotation.y += 0.01;
       jupiter.mesh.rotation.y += 0.01;
-      saturn.mesh.rotation.y += 0.01;
-      uranus.mesh.rotation.y += 0.01;
-      neptune.mesh.rotation.y += 0.01;
+      saturn.mesh.rotation.y += 0.001;
+      uranus.mesh.rotation.y += 0.001;
+      neptune.mesh.rotation.y += 0.001;
 
       // Orbit
       mercury.obj.rotation.y += 0.01;
       venus.obj.rotation.y += 0.001;
-      earth.obj.rotation.y += 0.0022;
-      mars.obj.rotation.y += 0.003;
-      jupiter.obj.rotation.y += 0.0035;
-      saturn.obj.rotation.y += 0.004;
-      uranus.obj.rotation.y += 0.0045;
-      neptune.obj.rotation.y += 0.005;
+      earth.obj.rotation.y += 0.001;
+      mars.obj.rotation.y += 0.001;
+      jupiter.obj.rotation.y += 0.001;
+      saturn.obj.rotation.y += 0.0004;
+      uranus.obj.rotation.y += 0.0003;
+      neptune.obj.rotation.y += 0.0001;
 
     }
 
