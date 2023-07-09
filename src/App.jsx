@@ -16,6 +16,7 @@ import uranusTexture from './Textures/uranus.jpg';
 import neptuneTexture from './Textures/neptune.png';
 import PlanetDescription from './Components/PlanetDescription';
 
+
 function App() {
   const canvasRef = React.useRef(null);
   const { createPlanet, addStar } = React.useContext(PlanetContext);
