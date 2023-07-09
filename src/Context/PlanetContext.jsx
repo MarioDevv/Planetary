@@ -27,6 +27,7 @@ export const PlanetProvider = ({ children }) => {
             const ringMat = new THREE.MeshBasicMaterial({
                 map: textureLoader.load(ring.texture),
                 side: THREE.DoubleSide
+                
             });
             const ringMesh = new THREE.Mesh(ringGeo, ringMat);
             obj.add(ringMesh);

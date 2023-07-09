@@ -4,7 +4,7 @@ import { PlanetContext } from '../Context/PlanetContext'
 
 function PlanetDescription() {
     const { currentPlanet, setCurrentPlanet } = useContext(PlanetContext)
-    setCurrentPlanet('Solar System') // This is an example
+    // setCurrentPlanet('Solar System') // This is an example
     
     return (
     <div className={`absolute top-5 left-5 w-[400px] h-[95%] backdrop-blur-md text-white p-5 rounded-lg shadow-[0_8px_20px_rgba(255,255,255,0.3)] ${currentPlanet == "" ? "hidden" : ""}`}>

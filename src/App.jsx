@@ -7,8 +7,13 @@ import { PlanetContext } from './Context/PlanetContext';
 // Images
 import sunTexture from './Textures/Sun.jpg';
 import alpineTexture from './Textures/Alpine.png';
-import savanaTexture from './Textures/Savannah.png';
-import tropicalTexture from './Textures/Tropical.png';
+import earthTexture from './Textures/earth.png';
+import venusTexture from './Textures/Venus.jpg';
+import marsTexture from './Textures/Mars.jpg';
+import saturnTexture from './Textures/Saturn.jpg';
+import jupiterTexture from './Textures/jupiter.jpg';
+import uranusTexture from './Textures/uranus.jpg';
+import neptuneTexture from './Textures/neptune.png';
 
 import PlanetDescription from './Components/PlanetDescription';
 
@@ -58,15 +63,42 @@ function App() {
     alpine.mesh.rotation.x = 0.5 * Math.PI;
     scene.add(alpine.obj);
 
-    // Create Savana
-    const savana = createPlanet(2, savanaTexture, 12);
-    savana.mesh.rotation.x = 0.5 * Math.PI;
-    scene.add(savana.obj);
+    // Create Venus
+    const venus = createPlanet(2, venusTexture, 12);
+    venus.mesh.rotation.x = 0.5 * Math.PI;
+    scene.add(venus.obj);
 
-    // Create Tropical
-    const tropical = createPlanet(3, tropicalTexture, 20);
-    tropical.mesh.rotation.x = 0.5 * Math.PI;
-    scene.add(tropical.obj);
+    // Create Earth
+    const earth = createPlanet(3, earthTexture, 20);
+    earth.mesh.rotation.x = 0.5 * Math.PI;
+    scene.add(earth.obj);
+
+    // Create Mars
+    const mars = createPlanet(4, marsTexture, 30);
+    mars.mesh.rotation.x = 0.5 * Math.PI;
+    scene.add(mars.obj);
+
+    // Create Jupiter
+    const jupiter = createPlanet(5, jupiterTexture, 40);
+    jupiter.mesh.rotation.x = 0.5 * Math.PI;
+    scene.add(jupiter.obj);
+
+
+    // Create Saturn
+    const saturn = createPlanet(5, saturnTexture, 50, {innerRadius: 7, outerRadius: 9, texture: saturnTexture});
+    saturn.mesh.rotation.x = 0.5 * Math.PI;
+    scene.add(saturn.obj);
+
+    // Create Uranus
+    const uranus = createPlanet(5, uranusTexture, 60);
+    uranus.mesh.rotation.x = 0.5 * Math.PI;
+    scene.add(uranus.obj);
+
+    // Create Neptune
+    const neptune = createPlanet(5, neptuneTexture, 70);
+    neptune.mesh.rotation.x = 0.5 * Math.PI;
+    scene.add(neptune.obj);
+
 
     function animate() {
       renderer.render(scene, camera);
@@ -74,13 +106,23 @@ function App() {
       // Self Rotation
       sun.rotation.z += 0.0040;
       alpine.mesh.rotation.z += 0.01;
-      savana.mesh.rotation.z += 0.01;
-      tropical.mesh.rotation.z += 0.01;
+      venus.mesh.rotation.z += 0.01;
+      earth.mesh.rotation.z += 0.01;
+      mars.mesh.rotation.z += 0.01;
+      jupiter.mesh.rotation.z += 0.01;
+      saturn.mesh.rotation.z += 0.01;
+      uranus.mesh.rotation.z += 0.01;
+      neptune.mesh.rotation.z += 0.01;
 
       // Orbit
       alpine.obj.rotation.y += 0.01;
-      savana.obj.rotation.y += 0.001;
-      tropical.obj.rotation.y += 0.0022;
+      venus.obj.rotation.y += 0.001;
+      earth.obj.rotation.y += 0.0022;
+      mars.obj.rotation.y += 0.003;
+      jupiter.obj.rotation.y += 0.0035;
+      saturn.obj.rotation.y += 0.004;
+      uranus.obj.rotation.y += 0.0045;
+      neptune.obj.rotation.y += 0.005;
     }
 
     renderer.setAnimationLoop(animate);
