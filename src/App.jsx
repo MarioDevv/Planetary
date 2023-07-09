@@ -5,11 +5,11 @@ import './index.css';
 import { PlanetContext } from './Context/PlanetContext';
 
 // Images
-import sunTexture from './Textures/Sun.jpg';
+import sunTexture from './Textures/sun.jpg';
 import mercuryTexture from './Textures/mercury.png';
-import venusTexture from './Textures/Venus.jpg';
+import venusTexture from './Textures/venus.jpg';
 import earthTexture from './Textures/earth.png';
-import marsTexture from './Textures/Mars.jpg';
+import marsTexture from './Textures/mars.jpg';
 import jupiterTexture from './Textures/jupiter.jpg';
 import saturnTexture from './Textures/Saturn.jpg';
 import uranusTexture from './Textures/uranus.jpg';
