@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as THREE from "three";
 
 // Create context
@@ -52,8 +52,11 @@ export const PlanetProvider = ({ children }) => {
         scene.add(star);
     }
 
+    // States
+    const [currentPlanet, setCurrentPlanet] = useState("");
+
     return (
-        <PlanetContext.Provider value={{ createPlanet, addStar }}>
+        <PlanetContext.Provider value={{ createPlanet, addStar, currentPlanet, setCurrentPlanet}}>
             {children}
         </PlanetContext.Provider>
     );

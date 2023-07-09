@@ -10,6 +10,8 @@ import alpineTexture from './Textures/Alpine.png';
 import savanaTexture from './Textures/Savannah.png';
 import tropicalTexture from './Textures/Tropical.png';
 
+import PlanetDescription from './Components/PlanetDescription';
+
 function App() {
   const canvasRef = React.useRef(null);
   const { createPlanet, addStar } = React.useContext(PlanetContext);
@@ -39,7 +41,7 @@ function App() {
 
     // Create Orbit Controls
     const orbit = new OrbitControls(camera, renderer.domElement);
-    camera.position.set(0, 12, 60);
+    camera.position.set(0, 100, 60);
     orbit.update();
 
     // Create Stars
@@ -118,7 +120,12 @@ function App() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} />;
+  return (
+    <>
+      <PlanetDescription />
+      <canvas ref={canvasRef} />
+    </>
+  );
 }
 
 export default App;
