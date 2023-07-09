@@ -10,17 +10,21 @@ import alpineTexture from './Textures/Alpine.png';
 import savanaTexture from './Textures/Savannah.png';
 import tropicalTexture from './Textures/Tropical.png';
 
+
 function App() {
   const canvasRef = React.useRef(null);
   const { createPlanet, addStar } = React.useContext(PlanetContext);
 
   React.useEffect(() => {
+
+    // Create Renderer
     const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x00000);
 
     // Create Scene
     const scene = new THREE.Scene();
+
     // Create Camera
     const camera = new THREE.PerspectiveCamera(
       45,
@@ -28,6 +32,8 @@ function App() {
       0.1,
       1000
     );
+
+
     // Create Texture Loader
     const textureLoader = new THREE.TextureLoader();
     // Create Point Light
@@ -42,6 +48,10 @@ function App() {
     camera.position.set(0, 12, 60);
     orbit.update();
 
+    // Limitar el zoom
+    orbit.minDistance = 30; // Establecer la distancia mínima de zoom
+    orbit.maxDistance = 80; // Establecer la distancia máxima de zoom
+
     // Create Stars
     Array(200).fill().forEach(() => addStar(scene))
 
@@ -52,19 +62,23 @@ function App() {
     scene.add(sun);
 
     // Create Alpine
-    const alpine = createPlanet(1.5, alpineTexture, 8);
+    const alpine = createPlanet(1.5, alpineTexture, 10);
     alpine.mesh.rotation.x = 0.5 * Math.PI;
     scene.add(alpine.obj);
 
     // Create Savana
-    const savana = createPlanet(2, savanaTexture, 12);
+    const savana = createPlanet(2, savanaTexture, 20);
     savana.mesh.rotation.x = 0.5 * Math.PI;
     scene.add(savana.obj);
 
     // Create Tropical
-    const tropical = createPlanet(3, tropicalTexture, 20);
+    const tropical = createPlanet(3, tropicalTexture, 34)
     tropical.mesh.rotation.x = 0.5 * Math.PI;
     scene.add(tropical.obj);
+
+
+
+
 
     function animate() {
       renderer.render(scene, camera);
@@ -76,9 +90,10 @@ function App() {
       tropical.mesh.rotation.z += 0.01;
 
       // Orbit
-      alpine.obj.rotation.y += 0.01;
-      savana.obj.rotation.y += 0.001;
+      alpine.obj.rotation.y += 0.001;
+      savana.obj.rotation.y += 0.0001;
       tropical.obj.rotation.y += 0.0022;
+
     }
 
     renderer.setAnimationLoop(animate);
@@ -104,6 +119,7 @@ function App() {
       // Dispose of resources
       renderer.dispose();
 
+      // Optimized way to dispose of resources
       scene.traverse((object) => {
         if (object.geometry) object.geometry.dispose();
         if (object.material) {
