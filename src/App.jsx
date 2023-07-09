@@ -57,7 +57,7 @@ function App() {
 
     // Limitar el zoom
     orbit.minDistance = 30; // Establecer la distancia mínima de zoom
-    orbit.maxDistance = 300; // Establecer la distancia máxima de zoom
+    orbit.maxDistance = 250; // Establecer la distancia máxima de zoom
 
     // Create Stars
     Array(300).fill().forEach(() => addStar(scene))

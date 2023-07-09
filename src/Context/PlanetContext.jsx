@@ -47,7 +47,7 @@ export const PlanetProvider = ({ children }) => {
 
         const [x, y, z] = Array(3)
             .fill()
-            .map(() => THREE.MathUtils.randFloatSpread(100));
+            .map(() => THREE.MathUtils.randFloatSpread(300));
 
         star.position.set(x, y, z);
         scene.add(star);
