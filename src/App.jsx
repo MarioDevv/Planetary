@@ -42,7 +42,6 @@ function App() {
     // const gridHelper = new THREE.GridHelper(200, 50);
     // scene.add(gridHelper);
 
-
     // Create Texture Loader
     const textureLoader = new THREE.TextureLoader();
     // Create Point Light
@@ -99,7 +98,7 @@ function App() {
     scene.add(uranus.obj);
 
     // Create Neptune
-    const neptune = createPlanet(5, neptuneTexture, 100);
+    const neptune = createPlanet(5, neptuneTexture, 110);
     scene.add(neptune.obj);
 
     function animate() {
