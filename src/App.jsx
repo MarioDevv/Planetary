@@ -69,7 +69,8 @@ function App() {
     const sunGeo = new THREE.SphereGeometry(4, 32, 32);
     const sunMat = new THREE.MeshBasicMaterial({ map: textureLoader.load(sunTexture) });
     const sun = new THREE.Mesh(sunGeo, sunMat);
-    // Orbit
+    
+    // Orbit Helper
     addRing({ innerRadius: 7.9, outerRadius: 8, texture: mercuryTexture }, sun, 0);
     addRing({ innerRadius: 14.9, outerRadius: 15, texture: venusTexture }, sun, 0);
     addRing({ innerRadius: 24.9, outerRadius: 25, texture: earthTexture }, sun, 0);
