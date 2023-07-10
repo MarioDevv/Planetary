@@ -19,7 +19,7 @@ import PlanetDescription from './Components/PlanetDescription';
 
 function App() {
   const canvasRef = React.useRef(null);
-  const { createPlanet, addStar } = React.useContext(PlanetContext);
+  const { createPlanet, addStar, addRing } = React.useContext(PlanetContext);
 
   React.useEffect(() => {
     // Create Renderer
@@ -68,6 +68,16 @@ function App() {
     const sunGeo = new THREE.SphereGeometry(4, 32, 32);
     const sunMat = new THREE.MeshBasicMaterial({ map: textureLoader.load(sunTexture) });
     const sun = new THREE.Mesh(sunGeo, sunMat);
+    // Orbit
+    addRing({ innerRadius: 7.9, outerRadius: 8, texture: mercuryTexture }, sun, 0);
+    addRing({ innerRadius: 14.9, outerRadius: 15, texture: venusTexture }, sun, 0);
+    addRing({ innerRadius: 24.9, outerRadius: 25, texture: earthTexture }, sun, 0);
+    addRing({ innerRadius: 34.9, outerRadius: 35, texture: marsTexture }, sun, 0);
+    addRing({ innerRadius: 49.9, outerRadius: 50, texture: jupiterTexture }, sun, 0);
+    addRing({ innerRadius: 67.9, outerRadius: 68, texture: saturnTexture }, sun, 0);
+    addRing({ innerRadius: 89.9, outerRadius: 90, texture: uranusTexture }, sun, 0);
+    addRing({ innerRadius: 109.9, outerRadius: 110, texture: neptuneTexture }, sun, 0);
+
     scene.add(sun);
 
     // Create Mercury

@@ -19,26 +19,29 @@ export const PlanetProvider = ({ children }) => {
         const obj = new THREE.Object3D();
         obj.add(mesh);
         if (ring) {
-            const ringGeo = new THREE.RingGeometry(
-                ring.innerRadius,
-                ring.outerRadius,
-                32
-            ); 
-            const ringMat = new THREE.MeshBasicMaterial({
-                map: textureLoader.load(ring.texture),
-                side: THREE.DoubleSide
-                
-            });
-            const ringMesh = new THREE.Mesh(ringGeo, ringMat);
-            obj.add(ringMesh);
-            ringMesh.position.x = position;
-            ringMesh.rotation.x = -0.5 * Math.PI;
+            addRing(ring, obj, position);
         }
         scene.add(obj);
         mesh.position.x = position;
         return { mesh, obj };
     }
 
+    function addRing(ring, obj, position) {
+        const ringGeo = new THREE.RingGeometry(
+            ring.innerRadius,
+            ring.outerRadius,
+            32
+        ); 
+        const ringMat = new THREE.MeshBasicMaterial({
+            map: textureLoader.load(ring.texture),
+            side: THREE.DoubleSide
+            
+        });
+        const ringMesh = new THREE.Mesh(ringGeo, ringMat);
+        obj.add(ringMesh);
+        ringMesh.position.x = position;
+        ringMesh.rotation.x = -0.5 * Math.PI;
+    }
 
     function addStar(scene) {
         const geo = new THREE.SphereGeometry(0.15, 24, 24);
@@ -57,7 +60,7 @@ export const PlanetProvider = ({ children }) => {
     const [currentPlanet, setCurrentPlanet] = useState("");
 
     return (
-        <PlanetContext.Provider value={{ createPlanet, addStar, currentPlanet, setCurrentPlanet}}>
+        <PlanetContext.Provider value={{ createPlanet, addStar, addRing, currentPlanet, setCurrentPlanet}}>
             {children}
         </PlanetContext.Provider>
     );
