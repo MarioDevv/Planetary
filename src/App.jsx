@@ -12,6 +12,7 @@ import earthTexture from './Textures/earth.png';
 import marsTexture from './Textures/mars.jpg';
 import jupiterTexture from './Textures/jupiter.jpg';
 import saturnTexture from './Textures/saturn.jpg';
+import saturnRingTexture from './Textures/saturn-ring.png';
 import uranusTexture from './Textures/uranus.jpg';
 import neptuneTexture from './Textures/neptune.png';
 import PlanetDescription from './Components/PlanetDescription';
@@ -38,6 +39,11 @@ function App() {
       1000
     );
 
+    // // grid helper
+    // const gridHelper = new THREE.GridHelper(200, 50);
+    // scene.add(gridHelper);
+
+
     // Create Texture Loader
     const textureLoader = new THREE.TextureLoader();
     // Create Point Light
@@ -49,12 +55,12 @@ function App() {
 
     // Create Orbit Controls
     const orbit = new OrbitControls(camera, renderer.domElement);
-    camera.position.set(0, 100, 60);
+    camera.position.set(0, 200, 0);
     orbit.update();
 
     // Limitar el zoom
-    orbit.minDistance = 30; 
-    orbit.maxDistance = 300; 
+    orbit.minDistance = 30; // Establecer la distancia mínima de zoom
+    orbit.maxDistance = 300; // Establecer la distancia máxima de zoom
 
     // Create Stars
     Array(300).fill().forEach(() => addStar(scene))
@@ -96,7 +102,8 @@ function App() {
     scene.add(jupiter.obj);
 
     // Create Saturn
-    const saturn = createPlanet(5, saturnTexture, 68, {innerRadius: 6, outerRadius: 8, texture: saturnTexture});
+    const saturn = createPlanet(5, saturnTexture, 68, {innerRadius: 6.5, outerRadius: 8.3, texture: saturnRingTexture});
+    addRing({ innerRadius: 9, outerRadius: 10, texture: saturnRingTexture }, saturn.obj, 68);
     scene.add(saturn.obj);
 
     // Create Uranus
@@ -111,7 +118,7 @@ function App() {
       renderer.render(scene, camera);
 
       // Self Rotation
-      sun.rotation.y += 0.0040;
+      // sun.rotation.y += 0.0040;
       mercury.mesh.rotation.y += 0.01;
       venus.mesh.rotation.y += 0.01;
       earth.mesh.rotation.y += 0.01;
@@ -121,15 +128,15 @@ function App() {
       uranus.mesh.rotation.y += 0.001;
       neptune.mesh.rotation.y += 0.001;
 
-      // Orbit
-      mercury.obj.rotation.y += 0.01;
-      venus.obj.rotation.y += 0.001;
-      earth.obj.rotation.y += 0.001;
-      mars.obj.rotation.y += 0.001;
-      jupiter.obj.rotation.y += 0.001;
-      saturn.obj.rotation.y += 0.0004;
-      uranus.obj.rotation.y += 0.0003;
-      neptune.obj.rotation.y += 0.0001;
+      // Orbit Speed
+      mercury.obj.rotation.y += 0.00172;
+      venus.obj.rotation.y += 0.00126;
+      earth.obj.rotation.y += 0.00107;
+      mars.obj.rotation.y += 0.00086;
+      jupiter.obj.rotation.y += 0.00047;
+      saturn.obj.rotation.y += 0.00034;
+      uranus.obj.rotation.y += 0.00024;
+      neptune.obj.rotation.y += 0.00019;
 
     }
 
