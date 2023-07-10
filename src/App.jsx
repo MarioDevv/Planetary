@@ -38,11 +38,6 @@ function App() {
       1000
     );
 
-    // // grid helper
-    // const gridHelper = new THREE.GridHelper(200, 50);
-    // scene.add(gridHelper);
-
-
     // Create Texture Loader
     const textureLoader = new THREE.TextureLoader();
     // Create Point Light
@@ -58,8 +53,8 @@ function App() {
     orbit.update();
 
     // Limitar el zoom
-    orbit.minDistance = 30; // Establecer la distancia mínima de zoom
-    orbit.maxDistance = 300; // Establecer la distancia máxima de zoom
+    orbit.minDistance = 30; 
+    orbit.maxDistance = 300; 
 
     // Create Stars
     Array(300).fill().forEach(() => addStar(scene))
