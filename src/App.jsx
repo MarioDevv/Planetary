@@ -69,22 +69,13 @@ function App() {
     const sunGeo = new THREE.SphereGeometry(4, 32, 32);
     const sunMat = new THREE.MeshBasicMaterial({ map: textureLoader.load(sunTexture) });
     const sun = new THREE.Mesh(sunGeo, sunMat);
-    
-    // Orbit Helper
-    addRing({ innerRadius: 7.9, outerRadius: 8, texture: mercuryTexture }, sun, 0);
-    addRing({ innerRadius: 14.9, outerRadius: 15, texture: venusTexture }, sun, 0);
-    addRing({ innerRadius: 24.9, outerRadius: 25, texture: earthTexture }, sun, 0);
-    addRing({ innerRadius: 34.9, outerRadius: 35, texture: marsTexture }, sun, 0);
-    addRing({ innerRadius: 49.9, outerRadius: 50, texture: jupiterTexture }, sun, 0);
-    addRing({ innerRadius: 67.9, outerRadius: 68, texture: saturnTexture }, sun, 0);
-    addRing({ innerRadius: 89.9, outerRadius: 90, texture: uranusTexture }, sun, 0);
-    addRing({ innerRadius: 109.9, outerRadius: 110, texture: neptuneTexture }, sun, 0);
 
     scene.add(sun);
-
+    
     // Create Mercury
     const mercury = createPlanet(1.5, mercuryTexture, 8);
     scene.add(mercury.obj);
+    // addRing({ innerRadius: mercury.mesh.position.x - 0.1, outerRadius: mercury.mesh.position.x, texture: mercury.obj.children[0].material.map }, sun, 0);
 
     // Create Venus
     const venus = createPlanet(2, venusTexture, 15);
@@ -114,6 +105,16 @@ function App() {
     // Create Neptune
     const neptune = createPlanet(5, neptuneTexture, 110);
     scene.add(neptune.obj);
+
+    // Orbit Helper
+    addRing({ innerRadius: mercury.mesh.position.x - 0.3, outerRadius: mercury.mesh.position.x, texture: mercuryTexture }, sun, 0);
+    addRing({ innerRadius: venus.mesh.position.x - 0.3, outerRadius: venus.mesh.position.x, texture: venusTexture }, sun, 0);
+    addRing({ innerRadius: earth.mesh.position.x - 0.3, outerRadius: earth.mesh.position.x, texture: earthTexture }, sun, 0);
+    addRing({ innerRadius: mars.mesh.position.x - 0.3, outerRadius: mars.mesh.position.x, texture: marsTexture }, sun, 0);
+    addRing({ innerRadius: jupiter.mesh.position.x - 0.3, outerRadius: jupiter.mesh.position.x, texture: jupiterTexture }, sun, 0);
+    addRing({ innerRadius: saturn.mesh.position.x - 0.3, outerRadius: saturn.mesh.position.x, texture: saturnTexture }, sun, 0);
+    addRing({ innerRadius: uranus.mesh.position.x - 0.3, outerRadius: uranus.mesh.position.x, texture: uranusTexture }, sun, 0);
+    addRing({ innerRadius: neptune.mesh.position.x - 0.3, outerRadius: neptune.mesh.position.x, texture: neptuneTexture }, sun, 0);
 
     function animate() {
       renderer.render(scene, camera);

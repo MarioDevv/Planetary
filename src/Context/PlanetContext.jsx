@@ -56,6 +56,12 @@ export const PlanetProvider = ({ children }) => {
         scene.add(star);
     }
 
+    function orbitHelper(planetList, sun) {
+        planetList.forEach((planet) => {
+            addRing({ innerRadius: planet.mesh.position.x - 0.1, outerRadius: planet.mesh.position.x, texture: planet.obj.children[0].material.map }, sun, 0);
+        });
+    }
+
     // States
     const [currentPlanet, setCurrentPlanet] = useState("");
 
