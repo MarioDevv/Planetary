@@ -6,7 +6,7 @@ import { PlanetContext } from './Context/PlanetContext';
 
 // Images
 import sunTexture from './Textures/Sun.jpg';
-import mercuryTexture from './Textures/mercury.png';
+import mercuryTexture from './Textures/mercury.jpg';
 import venusTexture from './Textures/venus.jpg';
 import earthTexture from './Textures/earth.png';
 import marsTexture from './Textures/mars.jpg';
