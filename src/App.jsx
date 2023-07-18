@@ -24,7 +24,7 @@ function App() {
 
   React.useEffect(() => {
     // Create Renderer
-    const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
+    const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current,  antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x00000);
 
@@ -38,11 +38,6 @@ function App() {
       0.1,
       1000
     );
-
-    // // grid helper
-    // const gridHelper = new THREE.GridHelper(200, 50);
-    // scene.add(gridHelper);
-
 
     // Create Texture Loader
     const textureLoader = new THREE.TextureLoader();
@@ -60,7 +55,7 @@ function App() {
 
     // Limitar el zoom
     orbit.minDistance = 30; // Establecer la distancia mínima de zoom
-    orbit.maxDistance = 300; // Establecer la distancia máxima de zoom
+    orbit.maxDistance = 200; // Establecer la distancia máxima de zoom
 
     // Create Stars
     Array(300).fill().forEach(() => addStar(scene))
@@ -69,13 +64,11 @@ function App() {
     const sunGeo = new THREE.SphereGeometry(4, 32, 32);
     const sunMat = new THREE.MeshBasicMaterial({ map: textureLoader.load(sunTexture) });
     const sun = new THREE.Mesh(sunGeo, sunMat);
-
     scene.add(sun);
-    
+
     // Create Mercury
     const mercury = createPlanet(1.5, mercuryTexture, 8);
     scene.add(mercury.obj);
-    // addRing({ innerRadius: mercury.mesh.position.x - 0.1, outerRadius: mercury.mesh.position.x, texture: mercury.obj.children[0].material.map }, sun, 0);
 
     // Create Venus
     const venus = createPlanet(2, venusTexture, 15);
@@ -94,7 +87,7 @@ function App() {
     scene.add(jupiter.obj);
 
     // Create Saturn
-    const saturn = createPlanet(5, saturnTexture, 68, {innerRadius: 6.5, outerRadius: 8.3, texture: saturnRingTexture});
+    const saturn = createPlanet(5, saturnTexture, 68, { innerRadius: 6.5, outerRadius: 8.3, texture: saturnRingTexture });
     addRing({ innerRadius: 9, outerRadius: 10, texture: saturnRingTexture }, saturn.obj, 68);
     scene.add(saturn.obj);
 
@@ -106,21 +99,12 @@ function App() {
     const neptune = createPlanet(5, neptuneTexture, 110);
     scene.add(neptune.obj);
 
-    // Orbit Helper
-    addRing({ innerRadius: mercury.mesh.position.x - 0.3, outerRadius: mercury.mesh.position.x, texture: mercuryTexture }, sun, 0);
-    addRing({ innerRadius: venus.mesh.position.x - 0.3, outerRadius: venus.mesh.position.x, texture: venusTexture }, sun, 0);
-    addRing({ innerRadius: earth.mesh.position.x - 0.3, outerRadius: earth.mesh.position.x, texture: earthTexture }, sun, 0);
-    addRing({ innerRadius: mars.mesh.position.x - 0.3, outerRadius: mars.mesh.position.x, texture: marsTexture }, sun, 0);
-    addRing({ innerRadius: jupiter.mesh.position.x - 0.3, outerRadius: jupiter.mesh.position.x, texture: jupiterTexture }, sun, 0);
-    addRing({ innerRadius: saturn.mesh.position.x - 0.3, outerRadius: saturn.mesh.position.x, texture: saturnTexture }, sun, 0);
-    addRing({ innerRadius: uranus.mesh.position.x - 0.3, outerRadius: uranus.mesh.position.x, texture: uranusTexture }, sun, 0);
-    addRing({ innerRadius: neptune.mesh.position.x - 0.3, outerRadius: neptune.mesh.position.x, texture: neptuneTexture }, sun, 0);
+  
 
     function animate() {
       renderer.render(scene, camera);
 
       // Self Rotation
-      // sun.rotation.y += 0.0040;
       mercury.mesh.rotation.y += 0.01;
       venus.mesh.rotation.y += 0.01;
       earth.mesh.rotation.y += 0.01;
@@ -131,14 +115,14 @@ function App() {
       neptune.mesh.rotation.y += 0.001;
 
       // Orbit Speed
-      mercury.obj.rotation.y += 0.00172;
-      venus.obj.rotation.y += 0.00126;
-      earth.obj.rotation.y += 0.00107;
-      mars.obj.rotation.y += 0.00086;
-      jupiter.obj.rotation.y += 0.00047;
-      saturn.obj.rotation.y += 0.00034;
-      uranus.obj.rotation.y += 0.00024;
-      neptune.obj.rotation.y += 0.00019;
+      mercury.obj.rotation.y += 0.0172;
+      venus.obj.rotation.y += 0.0111;
+      earth.obj.rotation.y += 0.00887;
+      mars.obj.rotation.y += 0.00806;
+      jupiter.obj.rotation.y += 0.00487;
+      saturn.obj.rotation.y += 0.0034;
+      uranus.obj.rotation.y += 0.00249;
+      neptune.obj.rotation.y += 0.0019;
 
     }
 
@@ -182,7 +166,6 @@ function App() {
 
   return (
     <>
-      <PlanetDescription />
       <canvas ref={canvasRef} />
     </>
   );
