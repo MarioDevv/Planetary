@@ -1,7 +1,4 @@
 # Planetary - Planetario 3D con Three.js y React
-
-![Planetary Banner](banner.jpg)
-
 ## Descripción
 **Planetary** es un proyecto que combina Three.js y React para crear un emocionante planetario 3D interactivo. Este repositorio contiene el código fuente completo para desarrollar un sistema planetario virtual que permite a los usuarios explorar sobre diferentes cuerpos celestes de una manera visualmente impresionante.
 
