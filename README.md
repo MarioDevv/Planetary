@@ -7,13 +7,13 @@
 
 ## Características
 
-- **Interacción:** intuitiva y fluida para explorar el sistema solar.
+- **Interacción:** Intuitiva y fluida para explorar el sistema solar.
 ![image](https://github.com/MarioDevv/Planetary/assets/90867675/5a069111-1655-4105-8769-a2517d226a57)
 
-- **Iluminación:** realista y efectos visuales que crean una experiencia envolvente.
+- **Iluminación:** Realista y efectos visuales que crean una experiencia envolvente.
 ![image](https://github.com/MarioDevv/Planetary/assets/90867675/929c7cdd-9e1e-4b7d-b2ed-5e7c70b1bda1)
 
-- **Diseño:** receptivo para garantizar una experiencia optimizada en dispositivos móviles y de escritorio.
+- **Diseño:** Receptivo para garantizar una experiencia optimizada en dispositivos móviles y de escritorio.
  ![image](https://github.com/MarioDevv/Planetary/assets/90867675/516a6f2d-d4b8-4abe-89ad-6909d7619d19)
 
 
